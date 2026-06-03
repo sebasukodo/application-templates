@@ -1,0 +1,80 @@
+import { application } from "~/userInfo";
+
+export default function CoverLetter() {
+  const now = new Date();
+
+  const day = String(now.getDate()).padStart(2, "0");
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const year = now.getFullYear();
+
+  const formattedDate = `${day}.${month}.${year}`;
+
+  const greeting =
+    application.companyInfo.contactPersonGender === "female"
+      ? `Sehr geehrte Frau ${application.companyInfo.contactPersonName},`
+      : `Sehr geehrter Herr ${application.companyInfo.contactPersonName},`;
+
+  return (
+    <div className="page bg-white max-w-3xl mx-auto shadow-lg px-14 py-12 text-gray-800 print:shadow-none print:max-w-full print:px-0 print:py-0">
+      <div className="mb-8">
+        <p className="text-sm text-gray-800">{application.userInfo.name}</p>
+        <p className="text-sm text-gray-800">{application.userInfo.address}</p>
+        <p className="text-sm text-gray-800">{`${application.userInfo.postalCode} ${application.userInfo.city}`}</p>
+        <p className="text-sm text-gray-800 mt-1">
+          {application.userInfo.phone}
+        </p>
+        <p className="text-sm text-gray-800">{application.userInfo.email}</p>
+      </div>
+
+      <div className="mb-8">
+        <p className="text-sm text-gray-800">
+          {application.companyInfo.companyName}
+        </p>
+        <p className="text-sm text-gray-800">
+          {application.companyInfo.address}
+        </p>
+        <p className="text-sm text-gray-800">{`${application.companyInfo.postalCode} ${application.companyInfo.city}`}</p>
+      </div>
+
+      <div className="mb-6 text-right">
+        <p className="text-sm text-gray-800">
+          {application.userInfo.city}, den {formattedDate}
+        </p>
+      </div>
+
+      <p className="text-sm font-bold text-gray-800 mb-6">
+        {application.coverLetter.subject}
+      </p>
+
+      <p className="text-sm text-gray-800 mb-4">{greeting}</p>
+
+      <p className="text-sm text-gray-800 leading-relaxed mb-4">
+        {application.coverLetter.introductionText}
+      </p>
+
+      <p className="text-sm text-gray-800 leading-relaxed mb-4">
+        {application.coverLetter.mainText}
+      </p>
+
+      <p className="text-sm text-gray-800 leading-relaxed mb-4">
+        {application.coverLetter.closingText}
+      </p>
+
+      <div>
+        <p className="text-sm text-gray-800 mb-2">
+          {application.coverLetter.closingFormula}
+        </p>
+        <div className="h-8 mb-1">
+          {application.userSignatureFilename !== "" && (
+            <img
+              src={`/${application.userSignatureFilename}`}
+              alt="Unterschrift"
+              className="h-8 w-auto"
+            />
+          )}
+        </div>
+        <p className="text-sm text-gray-800">{application.userInfo.name}</p>
+      </div>
+    </div>
+  );
+}
