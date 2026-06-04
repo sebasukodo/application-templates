@@ -38,7 +38,7 @@ export default function CoverLetter() {
 
   return (
     <div className="page bg-white max-w-3xl mx-auto shadow-lg px-14 py-12 text-gray-800 print:shadow-none print:max-w-full print:px-0 print:py-0">
-      <div className="mb-8">
+      <div className="mb-12">
         <p className="text-sm text-gray-800">{application.userInfo.name}</p>
         <p className="text-sm text-gray-800">{application.userInfo.address}</p>
         <p className="text-sm text-gray-800">{`${application.userInfo.postalCode} ${application.userInfo.city}`}</p>
@@ -48,7 +48,7 @@ export default function CoverLetter() {
         <p className="text-sm text-gray-800">{application.userInfo.email}</p>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-12">
         <p className="text-sm text-gray-800">
           {application.companyInfo.companyName}
         </p>
@@ -58,13 +58,13 @@ export default function CoverLetter() {
         <p className="text-sm text-gray-800">{`${application.companyInfo.postalCode} ${application.companyInfo.city}`}</p>
       </div>
 
-      <div className="mb-6 text-right">
+      <div className="mb-12 text-right">
         <p className="text-sm text-gray-800">
           {application.userInfo.city}, den {formattedDate}
         </p>
       </div>
 
-      <p className="text-sm font-bold text-gray-800 mb-6">
+      <p className="text-sm font-bold text-gray-800 mb-12">
         {application.coverLetter.subject}
       </p>
 
