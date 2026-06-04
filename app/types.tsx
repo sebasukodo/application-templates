@@ -56,9 +56,7 @@ export interface Language {
 
 export interface CoverLetter {
   subject: string;
-  introductionText: string;
-  mainText: string;
-  closingText: string;
+  text: string[];
   closingFormula: string;
 }
 

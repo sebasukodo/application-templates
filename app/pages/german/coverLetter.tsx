@@ -14,6 +14,10 @@ export default function CoverLetter() {
       ? `Sehr geehrte Frau ${application.companyInfo.contactPersonName},`
       : `Sehr geehrter Herr ${application.companyInfo.contactPersonName},`;
 
+  const mainText = application.coverLetter.text.map((prev) => {
+    return <p className="text-sm text-gray-800 leading-relaxed mb-4">{prev}</p>;
+  });
+
   return (
     <div className="page bg-white max-w-3xl mx-auto shadow-lg px-14 py-12 text-gray-800 print:shadow-none print:max-w-full print:px-0 print:py-0">
       <div className="mb-8">
@@ -48,17 +52,7 @@ export default function CoverLetter() {
 
       <p className="text-sm text-gray-800 mb-4">{greeting}</p>
 
-      <p className="text-sm text-gray-800 leading-relaxed mb-4">
-        {application.coverLetter.introductionText}
-      </p>
-
-      <p className="text-sm text-gray-800 leading-relaxed mb-4">
-        {application.coverLetter.mainText}
-      </p>
-
-      <p className="text-sm text-gray-800 leading-relaxed mb-4">
-        {application.coverLetter.closingText}
-      </p>
+      {mainText}
 
       <div>
         <p className="text-sm text-gray-800 mb-2">
