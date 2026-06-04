@@ -14,8 +14,15 @@ export default function CoverLetter() {
       ? `Sehr geehrte Frau ${application.companyInfo.contactPersonName},`
       : `Sehr geehrter Herr ${application.companyInfo.contactPersonName},`;
 
-  const mainText = application.coverLetter.text.map((prev) => {
-    return <p className="text-sm text-gray-800 leading-relaxed mb-4">{prev}</p>;
+  const mainText = application.coverLetter.text.map((prev, index) => {
+    return (
+      <p
+        className="text-sm text-gray-800 leading-relaxed mb-4"
+        key={`coverLetter-${index}`}
+      >
+        {prev}
+      </p>
+    );
   });
 
   return (

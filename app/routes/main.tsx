@@ -2,7 +2,7 @@ import type { Route } from "./+types/main";
 import Main from "../pages/main";
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "Resume" }];
+  return [{ title: "Homepage" }];
 }
 
 export default function MainPage() {
