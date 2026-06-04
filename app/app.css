@@ -14,6 +14,20 @@ h2 {
   font-family: "Inter", serif;
 }
 
+section {
+  break-inside: avoid;
+}
+h2 {
+  break-after: avoid;
+}
+li {
+  break-inside: avoid;
+}
+
+.job-entry {
+  break-inside: avoid;
+}
+
 .section-title {
   border-bottom: 1.5px solid #222;
   padding-bottom: 2px;

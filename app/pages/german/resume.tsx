@@ -12,9 +12,12 @@ export default function Resume() {
   const personalInfo = `${application.userInfo.phone} | ${application.userInfo.email} | ${application.userInfo.address}, ${application.userInfo.postalCode} ${application.userInfo.city}`;
   const personalLinks = application.userInfo.personalLinks.join(" | ");
 
-  const jobs = application.workingExperience.map((prev) => {
+  const jobs = application.workingExperience.map((prev, index) => {
     return (
-      <div className="mt-2 job-entry" key={prev.workingPlaceName}>
+      <div
+        className={index > 0 ? "mt-3 job-entry" : "mt-2 job-entry"}
+        key={prev.workingPlaceName}
+      >
         <div className="flex justify-between items-baseline">
           <p className="text-sm font-bold text-gray-900">{prev.jobTitle}</p>
           <p className="text-sm text-gray-600 whitespace-nowrap ml-4">
@@ -33,9 +36,9 @@ export default function Resume() {
     );
   });
 
-  const education = application.education.map((prev) => {
+  const education = application.education.map((prev, index) => {
     return (
-      <div className="mt-2" key={prev.institutionName}>
+      <div className={index > 0 ? "mt-3" : "mt-2"} key={prev.institutionName}>
         <div className="flex justify-between items-baseline">
           <p className="text-sm font-bold text-gray-900">{prev.degree}</p>
           <p className="text-sm text-gray-600 whitespace-nowrap ml-4">
@@ -54,9 +57,9 @@ export default function Resume() {
     );
   });
 
-  const projects = application.projects.map((prev) => {
+  const projects = application.projects.map((prev, index) => {
     return (
-      <div className="mt-2" key={prev.projectName}>
+      <div className={index > 0 ? "mt-3" : "mt-2"} key={prev.projectName}>
         <div className="flex justify-between items-baseline flex-wrap gap-1">
           <p className="text-sm font-bold text-gray-900">{prev.projectName}</p>
           <p className="text-sm text-gray-600 whitespace-nowrap">{prev.date}</p>
