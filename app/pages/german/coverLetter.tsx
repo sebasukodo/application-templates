@@ -14,13 +14,24 @@ export default function CoverLetter() {
       ? `Sehr geehrte Frau ${application.companyInfo.contactPersonName},`
       : `Sehr geehrter Herr ${application.companyInfo.contactPersonName},`;
 
-  const mainText = application.coverLetter.text.map((prev, index) => {
+  const mainText = application.coverLetter.text.map((paragraph, index) => {
+    const text = paragraph.lines.map((line, lineIndex) => {
+      return lineIndex > 0 ? (
+        <span key={`coverLetterLine-${lineIndex}`}>
+          <br />
+          {line}
+        </span>
+      ) : (
+        <span key={`coverLetterLine-${lineIndex}`}>{line}</span>
+      );
+    });
+
     return (
       <p
         className="text-sm text-gray-800 leading-relaxed mb-4"
         key={`coverLetter-${index}`}
       >
-        {prev}
+        {text}
       </p>
     );
   });

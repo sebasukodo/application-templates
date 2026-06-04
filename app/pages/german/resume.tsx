@@ -15,22 +15,20 @@ export default function Resume() {
   const jobs = application.workingExperience.map((prev) => {
     return (
       <div className="mt-2 job-entry" key={prev.workingPlaceName}>
-        <div className="mt-2 job-entry">
-          <div className="flex justify-between items-baseline">
-            <p className="text-sm font-bold text-gray-900">{prev.jobTitle}</p>
-            <p className="text-sm text-gray-600 whitespace-nowrap ml-4">
-              {prev.date}
-            </p>
-          </div>
-          <p className="text-sm text-gray-800">
-            {`${prev.workingPlaceName} | ${prev.workingPlaceCity}`}
+        <div className="flex justify-between items-baseline">
+          <p className="text-sm font-bold text-gray-900">{prev.jobTitle}</p>
+          <p className="text-sm text-gray-600 whitespace-nowrap ml-4">
+            {prev.date}
           </p>
-          <ul className="mt-2 space-y-1 list-disc list-outside ml-4 marker:font-normal marker:text-gray-600">
-            {prev.bulletPoints.map((bullet) => {
-              return <li className="text-sm text-gray-800 pl-1">{bullet}</li>;
-            })}
-          </ul>
         </div>
+        <p className="text-sm text-gray-800">
+          {`${prev.workingPlaceName} | ${prev.workingPlaceCity}`}
+        </p>
+        <ul className="mt-2 space-y-1 list-disc list-outside ml-4 marker:font-normal marker:text-gray-600">
+          {prev.bulletPoints.map((bullet) => {
+            return <li className="text-sm text-gray-800 pl-1">{bullet}</li>;
+          })}
+        </ul>
       </div>
     );
   });
@@ -45,7 +43,9 @@ export default function Resume() {
           </p>
         </div>
         <p className="text-sm text-gray-800">
-          {`${prev.institutionName} | Abschlussnote: ${prev.grade}`}
+          {prev.grade !== ""
+            ? `${prev.institutionName} | Abschlussnote: ${prev.grade}`
+            : `${prev.institutionName}`}
         </p>
         {prev.thesis !== "" && (
           <p className="text-sm text-gray-800">{`${prev.thesisType}: ${prev.thesis} (Note: ${prev.thesisGrade})`}</p>

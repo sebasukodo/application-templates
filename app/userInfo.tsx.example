@@ -28,9 +28,22 @@ export const application: Application = {
   coverLetter: {
     subject: "Bewerbung als Full-Stack Developer",
     text: [
-      "hiermit bewerbe ich mich mit großem Interesse auf die ausgeschriebene Stelle als Full-Stack Developer in Ihrem Unternehmen.",
-      "Ich habe mehrere Jahre Erfahrung in der Entwicklung moderner Webanwendungen mit React, TypeScript und Node.js. In meinen bisherigen Projekten konnte ich sowohl im Frontend als auch im Backend arbeiten und komplexe Features erfolgreich umsetzen.",
-      "Ich freue mich darauf, meine Fähigkeiten in Ihr Team einzubringen und gemeinsam an spannenden Projekten zu arbeiten.",
+        {
+            lines: [
+            "hiermit bewerbe ich mich mit großem Interesse auf die ausgeschriebene Stelle als Full-Stack Developer in Ihrem Unternehmen.",
+            ]
+        },
+        {
+            lines: [
+            "Ich habe mehrere Jahre Erfahrung in der Entwicklung moderner Webanwendungen mit React, TypeScript und Node.js. In meinen bisherigen Projekten konnte ich sowohl im Frontend als auch im Backend arbeiten und komplexe Features erfolgreich umsetzen.",
+            ]
+        },
+        {
+            lines: [
+            "Ich freue mich darauf, meine Fähigkeiten in Ihr Team einzubringen und gemeinsam an spannenden Projekten zu arbeiten.",
+            "Für Rückfragen stehe ich Ihnen gerne zur Verfügung.",
+            ]
+        },
     ],
 
     closingFormula: "Mit freundlichen Grüßen",
