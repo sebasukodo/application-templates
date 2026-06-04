@@ -33,7 +33,7 @@ userSignatureFilename: "signature.png";
 
 ---
 
-### 5. Install dependencies
+### 3. Install dependencies
 ```bash
 npm install
 ```
