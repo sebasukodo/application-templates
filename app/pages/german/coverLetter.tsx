@@ -1,23 +1,18 @@
 import { useContext } from "react";
 import { Link } from "react-router";
 import { ApplicationContext } from "~/applicationContext";
+import { getCurrentDateString } from "~/utils";
 
 export default function CoverLetter() {
   const context = useContext(ApplicationContext);
 
   if (!context) {
-    throw new Error("No applicationContext found");
+    throw new Error("no context");
   }
 
   const { app, setApp } = context;
 
-  const now = new Date();
-
-  const day = String(now.getDate()).padStart(2, "0");
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const year = now.getFullYear();
-
-  const formattedDate = `${day}.${month}.${year}`;
+  const formattedDate = getCurrentDateString();
 
   const greeting =
     app.companyInfo.contactPersonGender === "female"

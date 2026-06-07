@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router";
 import { ApplicationContext } from "~/applicationContext";
 import ApplicationForm from "~/components/ApplicationForm";
+import { DownloadJSON, ImportJSON } from "~/components/ManageUserJSON";
 import { emptyApplication } from "~/types";
 
 export default function UserInformation() {
@@ -33,7 +34,9 @@ export default function UserInformation() {
             Reset User Information
           </button>
         </div>
+        <ImportJSON setApp={setApp} />
         <ApplicationForm />
+        <DownloadJSON app={app} />
       </div>
     </main>
   );

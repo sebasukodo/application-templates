@@ -16,7 +16,7 @@ export default function ApplicationForm() {
   const context = useContext(ApplicationContext);
 
   if (!context) {
-    throw new Error("No applicationContext found");
+    throw new Error("no context");
   }
 
   const { app, setApp } = context;
@@ -74,14 +74,6 @@ export default function ApplicationForm() {
         languages={app.languages}
         onChange={(value) => set("languages", value)}
       />
-
-      <button
-        type="button"
-        onClick={() => console.log(app)}
-        className="mt-4 px-6 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700"
-      >
-        Log Application State
-      </button>
     </div>
   );
 }

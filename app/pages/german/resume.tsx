@@ -1,23 +1,18 @@
 import { Link } from "react-router";
 import { useContext } from "react";
 import { ApplicationContext } from "~/applicationContext";
+import { getCurrentDateString } from "~/utils";
 
 export default function Resume() {
   const context = useContext(ApplicationContext);
 
   if (!context) {
-    throw new Error("copy userInfo.tsx.example to userInfo.tsx");
+    throw new Error("no context");
   }
 
   const { app, setApp } = context;
 
-  const now = new Date();
-
-  const day = String(now.getDate()).padStart(2, "0");
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const year = now.getFullYear();
-
-  const formattedDate = `${day}.${month}.${year}`;
+  const formattedDate = getCurrentDateString();
 
   const personalInfo = `${app.userInfo.phone} | ${app.userInfo.email} | ${app.userInfo.address}, ${app.userInfo.postalCode} ${app.userInfo.city}`;
   const personalLinks = app.userInfo.personalLinks.join(" | ");

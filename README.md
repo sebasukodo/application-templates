@@ -8,13 +8,25 @@
 
 ### 1. Setup your personal data
 
-First, copy the example file:
+You can either create your personal data file manually or use the built-in import/export functionality.
+
+#### Option A: Create the file manually
+
+Copy the example file:
 
 ```bash
-cp userInfo.tsx.example userInfo.tsx
+cp userInfo.json.example userInfo.json
 ```
 
 Then replace the example content with your own information.
+
+#### Option B: Import an existing configuration or enter your information manually
+
+Open the `/user-information` page and either import a previously exported `.json` file or fill in your data manually.
+
+You can also download your current configuration at any time at the bottom of the `/user-information` page as `.json`.
+
+> Note: Your personal information never leaves your device. All `.json` files are ignored by Git and will never be committed to the repository.
 
 ---
 
@@ -23,13 +35,19 @@ Then replace the example content with your own information.
 If you want to include a signature:
 
 * Place your image inside the `public` folder
-* Set the file name in `userInfo.tsx`:
+* Set the file name in your user configuration:
 
-```ts
-userSignatureFilename: "signature.png";
+```json
+"userSignatureFilename": "signature.png";
 ```
 
-> Note: Both `userInfo.tsx` and the `public` folder are ignored by Git to ensure your personal data is never committed. Set `userSignatureFilename` to an empty string (`""`) if you do not want to include a signature.
+If you do not want to include a signature, set:
+
+```json
+"userSignatureFilename": "";
+```
+
+> Note: The entire `public` folder is ignored by Git to prevent personal data from being committed accidentally.
 
 ---
 
@@ -37,6 +55,8 @@ userSignatureFilename: "signature.png";
 ```bash
 npm install
 ```
+
+---
 
 ### 4. Start the development server
 
@@ -48,10 +68,10 @@ Your application will be available at: [http://localhost:5173](http://localhost:
 
 ---
 
-### 4. Export your documents
+### 5. Export your documents
 
 * Open the website
-* Navigate to **CV** or **Cover Letter**
+* Navigate to **Resume** or **Cover Letter**
 * Use your browser’s print function
 * Save as **PDF**
 

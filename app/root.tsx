@@ -2,8 +2,7 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { application } from "./userInfo";
-import type { Application } from "./types";
+import { emptyApplication, type Application } from "./types";
 import { useState } from "react";
 import { ApplicationContext } from "./applicationContext";
 
@@ -21,7 +20,7 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const [app, setApp] = useState<Application>(application);
+  const [app, setApp] = useState<Application>(() => emptyApplication());
 
   return (
     <html lang="de">
