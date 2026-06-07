@@ -21,7 +21,7 @@ export default function UserInfoFields({
           inputID="userName"
           placeholder="Max Mustermann"
           value={userInfo.name}
-          onChange={(value) => set("address", value)}
+          onChange={(value) => set("name", value)}
         />
       </Field>
       <Field labelID="userAddress" label="Your Address">
