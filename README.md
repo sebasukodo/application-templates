@@ -72,7 +72,7 @@ Your application will be available at: [http://localhost:5173](http://localhost:
 
 * Open the website
 * Navigate to **Resume** or **Cover Letter**
-* Use your browser’s print function
+* Use your browser’s print function by pressing `Print to .pdf`-Button
 * Save as **PDF**
 
 ---

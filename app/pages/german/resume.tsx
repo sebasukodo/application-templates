@@ -1,7 +1,7 @@
-import { Link } from "react-router";
 import { useContext } from "react";
 import { ApplicationContext } from "~/applicationContext";
 import { getCurrentDateString } from "~/utils";
+import NoPrintNavigation from "~/components/NoPrintNavigation";
 
 export default function Resume() {
   const context = useContext(ApplicationContext);
@@ -98,14 +98,7 @@ export default function Resume() {
 
   return (
     <div className="page bg-white max-w-3xl mx-auto shadow-lg px-14 py-12 text-gray-800 print:shadow-none print:max-w-full print:px-0 print:py-0">
-      <div className="no-print my-8">
-        <Link
-          to="/"
-          className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium text-center hover:bg-blue-700"
-        >
-          Back to Homepage
-        </Link>
-      </div>
+      <NoPrintNavigation />
       <div className="text-center mb-7">
         <h1 className="text-4xl font-bold tracking-wide text-gray-900">
           {app.userInfo.name}
