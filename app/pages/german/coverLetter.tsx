@@ -1,7 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router";
-import { application } from "~/userInfo";
+import { ApplicationContext } from "~/applicationContext";
 
 export default function CoverLetter() {
+  const context = useContext(ApplicationContext);
+
+  if (!context) {
+    throw new Error("No applicationContext found");
+  }
+
+  const { app, setApp } = context;
+
   const now = new Date();
 
   const day = String(now.getDate()).padStart(2, "0");
@@ -11,11 +20,11 @@ export default function CoverLetter() {
   const formattedDate = `${day}.${month}.${year}`;
 
   const greeting =
-    application.companyInfo.contactPersonGender === "female"
-      ? `Sehr geehrte Frau ${application.companyInfo.contactPersonName},`
-      : `Sehr geehrter Herr ${application.companyInfo.contactPersonName},`;
+    app.companyInfo.contactPersonGender === "female"
+      ? `Sehr geehrte Frau ${app.companyInfo.contactPersonName},`
+      : `Sehr geehrter Herr ${app.companyInfo.contactPersonName},`;
 
-  const mainText = application.coverLetter.text.map((paragraph, index) => {
+  const mainText = app.coverLetter.text.map((paragraph, index) => {
     const text = paragraph.lines.map((line, lineIndex) => {
       return lineIndex > 0 ? (
         <span key={`coverLetterLine-${lineIndex}`}>
@@ -48,33 +57,27 @@ export default function CoverLetter() {
         </Link>
       </div>
       <div className="mb-12">
-        <p className="text-sm text-gray-800">{application.userInfo.name}</p>
-        <p className="text-sm text-gray-800">{application.userInfo.address}</p>
-        <p className="text-sm text-gray-800">{`${application.userInfo.postalCode} ${application.userInfo.city}`}</p>
-        <p className="text-sm text-gray-800 mt-1">
-          {application.userInfo.phone}
-        </p>
-        <p className="text-sm text-gray-800">{application.userInfo.email}</p>
+        <p className="text-sm text-gray-800">{app.userInfo.name}</p>
+        <p className="text-sm text-gray-800">{app.userInfo.address}</p>
+        <p className="text-sm text-gray-800">{`${app.userInfo.postalCode} ${app.userInfo.city}`}</p>
+        <p className="text-sm text-gray-800 mt-1">{app.userInfo.phone}</p>
+        <p className="text-sm text-gray-800">{app.userInfo.email}</p>
       </div>
 
       <div className="mb-12">
-        <p className="text-sm text-gray-800">
-          {application.companyInfo.companyName}
-        </p>
-        <p className="text-sm text-gray-800">
-          {application.companyInfo.address}
-        </p>
-        <p className="text-sm text-gray-800">{`${application.companyInfo.postalCode} ${application.companyInfo.city}`}</p>
+        <p className="text-sm text-gray-800">{app.companyInfo.companyName}</p>
+        <p className="text-sm text-gray-800">{app.companyInfo.address}</p>
+        <p className="text-sm text-gray-800">{`${app.companyInfo.postalCode} ${app.companyInfo.city}`}</p>
       </div>
 
       <div className="mb-12 text-right">
         <p className="text-sm text-gray-800">
-          {application.userInfo.city}, den {formattedDate}
+          {app.userInfo.city}, den {formattedDate}
         </p>
       </div>
 
       <p className="text-sm font-bold text-gray-800 mb-12">
-        {application.coverLetter.subject}
+        {app.coverLetter.subject}
       </p>
 
       <p className="text-sm text-gray-800 mb-4">{greeting}</p>
@@ -83,18 +86,18 @@ export default function CoverLetter() {
 
       <div>
         <p className="text-sm text-gray-800 mb-2">
-          {application.coverLetter.closingFormula}
+          {app.coverLetter.closingFormula}
         </p>
         <div className="h-8 mb-1">
-          {application.userSignatureFilename !== "" && (
+          {app.userSignatureFilename !== "" && (
             <img
-              src={`/${application.userSignatureFilename}`}
+              src={`/${app.userSignatureFilename}`}
               alt="Unterschrift"
               className="h-8 w-auto"
             />
           )}
         </div>
-        <p className="text-sm text-gray-800">{application.userInfo.name}</p>
+        <p className="text-sm text-gray-800">{app.userInfo.name}</p>
       </div>
     </div>
   );

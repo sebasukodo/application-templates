@@ -83,3 +83,33 @@ export interface Application {
   skills: Skill[];
   languages: Language[];
 }
+
+export function emptyApplication(): Application {
+  return {
+    userInfo: {
+      name: "",
+      address: "",
+      postalCode: "",
+      city: "",
+      phone: "",
+      email: "",
+      personalLinks: [],
+    },
+    userSignatureFilename: "",
+    companyInfo: {
+      companyName: "",
+      address: "",
+      postalCode: "",
+      city: "",
+      contactPersonName: "",
+      contactPersonGender: "diverse",
+    },
+    coverLetter: { subject: "", text: [], closingFormula: "" },
+    shortProfileText: "",
+    workingExperience: [],
+    education: [],
+    projects: [],
+    skills: [],
+    languages: [],
+  };
+}

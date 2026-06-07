@@ -8,7 +8,16 @@ export default function Main() {
           Application-Templates Homepage
         </h1>
 
-        <h2 className="text-xl font-bold text-start mb-4">German Version:</h2>
+        <Link
+          to="/user-information"
+          className="px-6 py-3 rounded-xl bg-amber-500 text-white font-medium text-center hover:bg-amber-600 transition"
+        >
+          Enter your Information here
+        </Link>
+
+        <h2 className="text-xl font-bold text-start mt-8 mb-4">
+          German Version:
+        </h2>
         <div className="flex flex-col gap-4">
           <Link
             to="/anschreiben"

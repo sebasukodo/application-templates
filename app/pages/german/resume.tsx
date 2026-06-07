@@ -1,7 +1,16 @@
 import { Link } from "react-router";
-import { application } from "~/userInfo";
+import { useContext } from "react";
+import { ApplicationContext } from "~/applicationContext";
 
 export default function Resume() {
+  const context = useContext(ApplicationContext);
+
+  if (!context) {
+    throw new Error("copy userInfo.tsx.example to userInfo.tsx");
+  }
+
+  const { app, setApp } = context;
+
   const now = new Date();
 
   const day = String(now.getDate()).padStart(2, "0");
@@ -10,10 +19,10 @@ export default function Resume() {
 
   const formattedDate = `${day}.${month}.${year}`;
 
-  const personalInfo = `${application.userInfo.phone} | ${application.userInfo.email} | ${application.userInfo.address}, ${application.userInfo.postalCode} ${application.userInfo.city}`;
-  const personalLinks = application.userInfo.personalLinks.join(" | ");
+  const personalInfo = `${app.userInfo.phone} | ${app.userInfo.email} | ${app.userInfo.address}, ${app.userInfo.postalCode} ${app.userInfo.city}`;
+  const personalLinks = app.userInfo.personalLinks.join(" | ");
 
-  const jobs = application.workingExperience.map((prev, index) => {
+  const jobs = app.workingExperience.map((prev, index) => {
     return (
       <div
         className={index > 0 ? "mt-3 job-entry" : "mt-2 job-entry"}
@@ -37,7 +46,7 @@ export default function Resume() {
     );
   });
 
-  const education = application.education.map((prev, index) => {
+  const education = app.education.map((prev, index) => {
     return (
       <div className={index > 0 ? "mt-3" : "mt-2"} key={prev.institutionName}>
         <div className="flex justify-between items-baseline">
@@ -58,7 +67,7 @@ export default function Resume() {
     );
   });
 
-  const projects = application.projects.map((prev, index) => {
+  const projects = app.projects.map((prev, index) => {
     return (
       <div className={index > 0 ? "mt-3" : "mt-2"} key={prev.projectName}>
         <div className="flex justify-between items-baseline flex-wrap gap-1">
@@ -74,7 +83,7 @@ export default function Resume() {
     );
   });
 
-  const skills = application.skills.map((prev) => {
+  const skills = app.skills.map((prev) => {
     return (
       <li className="text-sm text-gray-800 pl-1" key={prev.title}>
         <span className="font-semibold text-gray-800">{`${prev.title}: `}</span>
@@ -83,7 +92,7 @@ export default function Resume() {
     );
   });
 
-  const languages = application.languages.map((prev) => {
+  const languages = app.languages.map((prev) => {
     return (
       <li className="text-sm text-gray-800 pl-1">
         <span className="font-semibold text-gray-800">{`${prev.language}: `}</span>
@@ -104,7 +113,7 @@ export default function Resume() {
       </div>
       <div className="text-center mb-7">
         <h1 className="text-4xl font-bold tracking-wide text-gray-900">
-          {application.userInfo.name}
+          {app.userInfo.name}
         </h1>
         <div className="flex flex-col">
           <p className="text-sm text-gray-800 mt-2 leading-relaxed">
@@ -121,7 +130,7 @@ export default function Resume() {
           Kurzprofil
         </h2>
         <p className="text-sm text-gray-800 leading-relaxed mt-1">
-          {application.shortProfileText}
+          {app.shortProfileText}
         </p>
       </section>
 
@@ -166,17 +175,17 @@ export default function Resume() {
 
       <section className="mt-6">
         <div className="h-8 mb-1">
-          {application.userSignatureFilename !== "" && (
+          {app.userSignatureFilename !== "" && (
             <img
-              src={`/${application.userSignatureFilename}`}
+              src={`/${app.userSignatureFilename}`}
               alt="Unterschrift"
               className="h-8 w-auto"
             />
           )}
         </div>
-        <p className="text-sm text-gray-800">{application.userInfo.name}</p>
+        <p className="text-sm text-gray-800">{app.userInfo.name}</p>
         <p className="text-sm text-gray-600">
-          {`${application.userInfo.city}, ${formattedDate}`}
+          {`${app.userInfo.city}, ${formattedDate}`}
         </p>
       </section>
     </div>
