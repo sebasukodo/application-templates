@@ -91,6 +91,7 @@
     {
       "projectName": "Portfolio Website",
       "date": "2024",
+      "link": "github.com/....",
       "infoText": [
         "Erstellt mit React und TailwindCSS",
         "Integration eines dynamischen Content-Systems"
@@ -99,6 +100,7 @@
     {
       "projectName": "Resume Builder App",
       "date": "2025",
+      "link": "",
       "infoText": [
         "Full-Stack Anwendung mit Node.js Backend",
         "Export von Lebensläufen als PDF"

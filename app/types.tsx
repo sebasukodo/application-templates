@@ -41,6 +41,7 @@ export interface Project {
   projectName: string;
   date: string;
   infoText: string[];
+  link: string;
 }
 
 export interface Skill {
@@ -51,7 +52,7 @@ export interface Skill {
 export interface Language {
   language: string;
   motherTongue: boolean;
-  level: "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+  level: string;
 }
 
 export interface CoverLetterText {

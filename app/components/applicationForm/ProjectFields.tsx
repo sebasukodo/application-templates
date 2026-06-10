@@ -39,6 +39,14 @@ function ProjectItem({
             onChange={(value) => set("date", value)}
           />
         </Field>
+        <Field labelID={`proj-link-${index}`} label="Link">
+          <TextInput
+            inputID={`proj-link-${index}`}
+            placeholder="https://github.com/..."
+            value={project.link}
+            onChange={(value) => set("link", value)}
+          />
+        </Field>
         <StringListInput
           label="Info Text"
           values={project.infoText}
@@ -57,7 +65,12 @@ export function ProjectsFields({
   projects: Project[];
   onChange: (v: Project[]) => void;
 }) {
-  const empty = (): Project => ({ projectName: "", date: "", infoText: [""] });
+  const empty = (): Project => ({
+    projectName: "",
+    date: "",
+    infoText: [""],
+    link: "",
+  });
   const update = (index: number, value: Project) => {
     const list = [...projects];
     list[index] = value;

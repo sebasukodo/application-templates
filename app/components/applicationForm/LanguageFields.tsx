@@ -3,8 +3,6 @@ import { Field, TextInput } from "./InputFields";
 import { inputClass, labelClass } from "./classes";
 import { ArrayFormButton } from "./Buttons";
 
-const languageLevels = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
-
 function LanguageItem({
   language,
   onChange,
@@ -29,24 +27,14 @@ function LanguageItem({
           onChange={(value) => set("language", value)}
         />
       </Field>
-      <label htmlFor={`lang-level-${index}`} className={labelClass}>
-        Level
-        <select
-          id={`lang-level-${index}`}
-          className={inputClass}
+      <Field labelID={`lang-level-${index}`} label="Level">
+        <TextInput
+          inputID={`lang-name-${index}`}
+          placeholder="C1"
           value={language.level}
-          onChange={(event) =>
-            set("level", event.target.value as Language["level"])
-          }
-          disabled={language.motherTongue}
-        >
-          {languageLevels.map((lanLevel) => (
-            <option key={lanLevel} value={lanLevel}>
-              {lanLevel}
-            </option>
-          ))}
-        </select>
-      </label>
+          onChange={(value) => set("level", value)}
+        />
+      </Field>
       <label className="flex flex-row items-center gap-2 text-md self-end mb-2">
         <input
           type="checkbox"

@@ -69,6 +69,13 @@ export default function Resume() {
           <p className="text-sm font-bold text-gray-900">{prev.projectName}</p>
           <p className="text-sm text-gray-600 whitespace-nowrap">{prev.date}</p>
         </div>
+        {prev.link !== "" ? (
+          <a href={prev.link} className="text-sm text-gray-800 italic my-0">
+            {prev.link}
+          </a>
+        ) : (
+          <></>
+        )}
         <ul className="mt-2 space-y-1 list-disc list-outside ml-4 marker:font-normal marker:text-gray-600">
           {prev.infoText.map((text) => {
             return <li className="text-sm text-gray-800 pl-1">{text}</li>;
