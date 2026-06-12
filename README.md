@@ -1,6 +1,16 @@
 # Application Templates
 
-> Generate professional CVs and cover letters in minutes — without worrying about layout, formatting, or design.
+Generate professional CVs and cover letters in minutes — without worrying about layout, formatting, or design.
+
+---
+
+## Motivation
+I never enjoyed writing documents in Word — navigating, formatting, and reusing content 
+never felt right to me. So I decided to use something I actually enjoy: HTML.
+
+This project uses a React Router app with JSON import/export to store all the information 
+needed for job applications. Instead of maintaining multiple Word documents, you only need 
+to update a single template.
 
 ---
 
