@@ -120,35 +120,43 @@ export default function Resume() {
         </div>
       </div>
 
-      <section className="mb-6">
-        <h2 className="text-xl font-bold text-gray-900 section-title">
-          Kurzprofil
-        </h2>
-        <p className="text-sm text-gray-800 leading-relaxed mt-1">
-          {app.shortProfileText}
-        </p>
-      </section>
+      {app.shortProfileText !== "" && (
+        <section className="mb-6">
+          <h2 className="text-xl font-bold text-gray-900 section-title">
+            Kurzprofil
+          </h2>
+          <p className="text-sm text-gray-800 leading-relaxed mt-1">
+            {app.shortProfileText}
+          </p>
+        </section>
+      )}
 
-      <section className="mb-6">
-        <h2 className="text-xl font-bold text-gray-900 section-title">
-          Berufserfahrung
-        </h2>
-        {jobs}
-      </section>
+      {app.workingExperience.length > 0 && (
+        <section className="mb-6">
+          <h2 className="text-xl font-bold text-gray-900 section-title">
+            Berufserfahrung
+          </h2>
+          {jobs}
+        </section>
+      )}
 
-      <section className="mb-6">
-        <h2 className="text-xl font-bold text-gray-900 section-title">
-          Ausbildung
-        </h2>
-        {education}
-      </section>
+      {app.education.length > 0 && (
+        <section className="mb-6">
+          <h2 className="text-xl font-bold text-gray-900 section-title">
+            Ausbildung
+          </h2>
+          {education}
+        </section>
+      )}
 
-      <section className="mb-6">
-        <h2 className="text-xl font-bold text-gray-900 section-title">
-          Projekte
-        </h2>
-        {projects}
-      </section>
+      {app.projects.length > 0 && (
+        <section className="mb-6">
+          <h2 className="text-xl font-bold text-gray-900 section-title">
+            Projekte
+          </h2>
+          {projects}
+        </section>
+      )}
 
       <section className="mb-6">
         <h2 className="text-xl font-bold text-gray-900 section-title">
