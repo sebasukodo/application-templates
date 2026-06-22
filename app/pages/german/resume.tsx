@@ -15,7 +15,18 @@ export default function Resume() {
   const formattedDate = getCurrentDateString();
 
   const personalInfo = `${app.userInfo.phone} | ${app.userInfo.email} | ${app.userInfo.address}, ${app.userInfo.postalCode} ${app.userInfo.city}`;
-  const personalLinks = app.userInfo.personalLinks.join(" | ");
+
+  const personalLinks = app.userInfo.personalLinks.map((url, index) => {
+    const href = url.startsWith("https://") ? url : `https://${url}`;
+    return (
+      <span key={url}>
+        <a href={href} target="_blank">
+          {url}
+        </a>
+        {index < app.userInfo.personalLinks.length - 1 && " | "}
+      </span>
+    );
+  });
 
   const jobs = app.workingExperience.map((prev, index) => {
     return (
