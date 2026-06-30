@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { ArrayFormButton } from "./Buttons";
 
 const inputClass = "border-gray-700 border rounded-md px-2 py-2";
@@ -59,10 +60,21 @@ export function TextAreaInput({
   onChange: (v: string) => void;
   extraClass?: string;
 }) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    textarea.style.height = "0px";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }, [value]);
+
   return (
     <textarea
+      ref={textareaRef}
       id={inputID}
-      className={`${inputClass} ${extraClass} min-h-20 resize-y`}
+      className={`${inputClass} ${extraClass} min-h-20 resize-none overflow-hidden`}
       placeholder={placeholder}
       value={value}
       onChange={(event) => onChange(event.target.value)}
@@ -81,6 +93,17 @@ export function StringListInput({
   values: string[];
   onChange: (v: string[]) => void;
 }) {
+  const textareaRefs = useRef<(HTMLTextAreaElement | null)[]>([]);
+
+  useLayoutEffect(() => {
+    textareaRefs.current.forEach((textarea) => {
+      if (!textarea) return;
+
+      textarea.style.height = "0px";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    });
+  }, [values]);
+
   const update = (index: number, value: string) => {
     const next = [...values];
     next[index] = value;
@@ -93,11 +116,13 @@ export function StringListInput({
   const allStrings = values.map((value, index) => (
     <div key={`${label}-stringList-${index}`} className="flex gap-2">
       <textarea
-        className={`${inputClass} flex-1`}
+        ref={(element) => {
+          textareaRefs.current[index] = element;
+        }}
+        className={`${inputClass} flex-1 resize-none overflow-hidden`}
         placeholder={placeholder}
         value={value}
         onChange={(event) => update(index, event.target.value)}
-        rows={1}
       />
       <ArrayFormButton type="remove" onClick={() => remove(index)} />
     </div>
