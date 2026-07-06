@@ -1,4 +1,4 @@
-import type { Application, Gender } from "~/types";
+import type { Application, GreetingTarget } from "~/types";
 import { inputClass, labelClass, sectionClass } from "./classes";
 import { Field, TextInput } from "./InputFields";
 
@@ -56,16 +56,21 @@ export default function CompanyInfoFields({
           onChange={(value) => set("contactPersonName", value)}
         />
       </Field>
-      <label htmlFor="contactPersonGender" className={labelClass}>
-        Contact Person Gender
+      <label htmlFor="contactPersonGreetingTarget" className={labelClass}>
+        Contact Person Greeting Type
         <select
-          id="contactPersonGender"
+          id="contactPersonGreetingTarget"
           className={inputClass}
-          value={companyInfo.contactPersonGender}
+          value={companyInfo.contactPersonGreetingTarget}
           onChange={(event) =>
-            set("contactPersonGender", event.target.value as Gender)
+            set(
+              "contactPersonGreetingTarget",
+              event.target.value as GreetingTarget,
+            )
           }
         >
+          <option value="default">Default</option>
+          <option value="team">Team</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="diverse">Diverse</option>

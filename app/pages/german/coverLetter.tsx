@@ -14,12 +14,33 @@ export default function CoverLetter() {
 
   const formattedDate = getCurrentDateString();
 
-  const greeting =
-    app.companyInfo.contactPersonName === ""
-      ? `Sehr geehrte Damen und Herren,`
-      : app.companyInfo.contactPersonGender === "female"
+  let greeting: string;
+  switch (app.companyInfo.contactPersonGreetingTarget) {
+    case "female":
+      greeting = app.companyInfo.contactPersonName
         ? `Sehr geehrte Frau ${app.companyInfo.contactPersonName},`
-        : `Sehr geehrter Herr ${app.companyInfo.contactPersonName},`;
+        : "Sehr geehrte Damen und Herren,";
+      break;
+
+    case "male":
+      greeting = app.companyInfo.contactPersonName
+        ? `Sehr geehrter Herr ${app.companyInfo.contactPersonName},`
+        : "Sehr geehrte Damen und Herren,";
+      break;
+
+    case "diverse":
+      greeting = app.companyInfo.contactPersonName
+        ? `Guten Tag ${app.companyInfo.contactPersonName},`
+        : "Sehr geehrte Damen und Herren,";
+      break;
+
+    case "team":
+      greeting = `Sehr geehrtes Team der ${app.companyInfo.companyName},`;
+      break;
+
+    default:
+      greeting = "Sehr geehrte Damen und Herren,";
+  }
 
   const mainText = app.coverLetter.text.map((paragraph, index) => {
     const text = paragraph.lines.map((line, lineIndex) => {

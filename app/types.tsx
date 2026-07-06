@@ -1,4 +1,4 @@
-export type Gender = "male" | "female" | "diverse";
+export type GreetingTarget = "male" | "female" | "diverse" | "team" | "default";
 
 export interface UserInfo {
   name: string;
@@ -16,7 +16,7 @@ export interface CompanyInfo {
   postalCode: string;
   city: string;
   contactPersonName: string;
-  contactPersonGender: Gender;
+  contactPersonGreetingTarget: GreetingTarget;
 }
 
 export interface WorkingExperience {
@@ -103,7 +103,7 @@ export function emptyApplication(): Application {
       postalCode: "",
       city: "",
       contactPersonName: "",
-      contactPersonGender: "diverse",
+      contactPersonGreetingTarget: "default",
     },
     coverLetter: { subject: "", text: [], closingFormula: "" },
     shortProfileText: "",
